@@ -1,6 +1,6 @@
 # Path
 
-    TODO: Gilded Rose katta in 3 steps.
+    TODO: Gilded Rose kata in 3 steps.
 
 1. First step will be to analyze the code and place comments to make the code more readable.
 
