@@ -39,5 +39,60 @@ describe("Gilded Rose", function () {
       expect(items[0].quality).toEqual(2);
       expect(items[0].sellIn).toEqual(-1);
     });
+    it("quality should not be above 50", function () {
+      const gildedRose = new Shop([new Item("Aged Brie", 5, 50)]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].quality).toEqual(50);
+    });
+    it("quality should not be above 50", function () {
+      const gildedRose = new Shop([new Item("Aged Brie", 5, 50)]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].quality).toEqual(50);
+    });
+  });
+
+  describe("Sulfuras", function () {
+    it("Should never change quality or the sellIn value", function () {
+      const gildedRose = new Shop([
+        new Item("Sulfuras, Hand of Ragnaros", 10, 80),
+      ]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].quality).toEqual(80);
+      expect(items[0].sellIn).toEqual(10);
+    });
+  });
+
+  describe("Backstage Passes", function () {
+    it("Should increase quality by +1 when sellIn decreases, and sellIn is not bellow 11", function () {
+      const gildedRose = new Shop([
+        new Item("Backstage passes to a TAFKAL80ETC concert", 20, 0),
+      ]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].quality).toEqual(1);
+      expect(items[0].sellIn).toEqual(19);
+    });
+    it("Should increase quality by +2 when sellIn decreases, and sellIn is between 6 and 11, 6 < backstage pass < 11", function () {
+      const gildedRose = new Shop([
+        new Item("Backstage passes to a TAFKAL80ETC concert", 10, 0),
+      ]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].quality).toEqual(2);
+      expect(items[0].sellIn).toEqual(9);
+    });
+    it("Should increase quality by +3 when sellIn decreases, and sellIn is less then 6 but bigger then 0, 0 < backstage pass < 6", function () {
+      const gildedRose = new Shop([
+        new Item("Backstage passes to a TAFKAL80ETC concert", 5, 5),
+      ]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].quality).toEqual(8);
+      expect(items[0].sellIn).toEqual(4);
+    });
+    it("Quality should be 0 when sellIn is 0", function () {
+      const gildedRose = new Shop([
+        new Item("Backstage passes to a TAFKAL80ETC concert", 0, 40),
+      ]);
+      const items = gildedRose.updateQuality();
+      expect(items[0].quality).toEqual(0);
+    });
   });
 });
