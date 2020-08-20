@@ -101,7 +101,10 @@ class Shop {
     }
   }
   conjuredItemsMethod(item) {
+    // we decrement the sellin value by assigning the return value of decrementSellInValue method
     item.sellIn = this.decrementSellInValue(item.sellIn);
+    // note: if the sellin is less than 0 we decrease the quality by 2
+    //       if the sellin is above 0 we decrease the quality by 1
     switch (true) {
       case item.sellIn < 0:
         item.quality = this.decrementQualityByNumber(item.quality, 4);
