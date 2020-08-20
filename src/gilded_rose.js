@@ -46,7 +46,7 @@ class Shop {
       else {
         // if the quality of aged brie and backstage passes is below 50, that means AB and BP cannnot be more than 49
         if (this.items[i].quality < 50) {
-          // we update the quality by +1
+          // we update the quality of AB and BP by +1
           this.items[i].quality = this.items[i].quality + 1;
           // after the quality update, we check if the name is BP
           if (
@@ -100,7 +100,7 @@ class Shop {
         } else {
           // so the name is AB, and if the quality is less then 50,
           if (this.items[i].quality < 50) {
-            // we updated the quality of AB +1, total +2? not sure
+            // we updated the quality of AB +1, total +2? not sure / UPDATE: if the date is below 0, value goes +2 for AB
             this.items[i].quality = this.items[i].quality + 1;
           }
         }
