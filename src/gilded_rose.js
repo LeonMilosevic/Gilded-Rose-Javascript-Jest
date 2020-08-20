@@ -128,7 +128,6 @@ class Shop {
           this.sulfurasMethod(item);
           break;
         case "Conjured":
-          console.log(item.name.startsWith("Conjured"));
           this.conjuredItemsMethod(item);
           break;
         default:
